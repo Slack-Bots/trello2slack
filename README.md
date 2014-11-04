@@ -9,6 +9,9 @@ You should be able to receive it at least.
 
 # your server's setting
 
+## Experiment Environment
+  - OS centOS: release 6.6 (Final)
+
 ## POSTFIX(v 2.6.6)
 
 ### main.cf 
@@ -32,5 +35,11 @@ $ sudo newaliases
 ## Execute Authority of trello2slack
 `$ sudo chown nobody:nobody trello2slack -R`  
 
-# Experiment Environment
-- OS centOS: release 6.6 (Final)  
+# Slack API
+- Incoming WebHooks  
+- use `curl -X POST --data-urlencode ...token=<your token>`  
+
+# Trello
+- setting -> Notifications -> (Periodically or Instantly)  
+- primary email is your server's mail  
+- if you want to receive time limit card, you must subscribe it  
