@@ -12,6 +12,8 @@ You should be able to receive it at least.
 ## Experiment Environment
   - OS centOS: release 6.6 (Final)
 
+`$ git clone git@github.com:Slack-Channels/trello2slack.git`  
+
 ## POSTFIX(v 2.6.6)
 
 ### main.cf 
@@ -27,7 +29,7 @@ path: /etc/aliases
 
 ```
 # "receive user" : "command to operate when if you receive"
-trello: "| /usr/bin/php /tmp/trello2slack/app.php > /dev/null 2>&1"
+trello: "| /usr/bin/php /<path>/trello2slack/app.php > /dev/null 2>&1"
 ```
 
 `$ sudo newaliases`    
@@ -43,15 +45,25 @@ trello: "| /usr/bin/php /tmp/trello2slack/app.php > /dev/null 2>&1"
 - setting -> Notifications -> (Periodically or Instantly)  
 - primary email is your server's mail  
 - if you want to receive time limit card, you must subscribe it  
-- 
+
 # Library
 - Mail_mimeDecode  
 `$ pear install Mail_mimeDecode`    
 
 # info.txt  
-slack info  
+path: trello2slack/  
+write slack info  
+
 - 1. subdomain  
 - 2. token  
 - 3. channel  
 - 4. bot name  
-- 5. emoji(like :moyai: )  
+- 5. emoji(`:moyai:` :moyai:)  
+
+# like this
+![:-(](http://about-hiroppy.com/screenshot/trello2slack/20141105%2015.56.51.png)  
+
+# Licence
+[MIT](http://opensource.org/licenses/MIT)  
+
+
