@@ -20,7 +20,7 @@ path: /etc/postfix/main.cf
 `alias_maps = hash:/etx/aliases`  
 `alias_database = hash:/etc/aliases`  
 
-$ sudo service postfix restart
+'$ sudo service postfix restart'  
 
 ### aliases
 path: /etc/aliases
@@ -30,7 +30,7 @@ path: /etc/aliases
 trello: "| /usr/bin/php /tmp/trello2slack/app.php > /dev/null 2>&1"
 ```
 
-$ sudo newaliases  
+'$ sudo newaliases'    
 
 ## Execute Authority of trello2slack
 `$ sudo chown nobody:nobody trello2slack -R`  
@@ -43,3 +43,7 @@ $ sudo newaliases
 - setting -> Notifications -> (Periodically or Instantly)  
 - primary email is your server's mail  
 - if you want to receive time limit card, you must subscribe it  
+- 
+# Library
+- Mail_mimeDecode  
+'$ pear install Mail_mimeDecode'  
