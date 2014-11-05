@@ -43,7 +43,7 @@ trello: "| /usr/bin/php /tmp/trello2slack/app.php > /dev/null 2>&1"
 - setting -> Notifications -> (Periodically or Instantly)  
 - primary email is your server's mail  
 - if you want to receive time limit card, you must subscribe it  
-- 
+
 # Library
 - Mail_mimeDecode  
 `$ pear install Mail_mimeDecode`    
