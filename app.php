@@ -6,10 +6,12 @@
 
 require_once("Mail/mimeDecode.php");
 
-$mail = file_get_contents("php://stdin");
 
-if(!$mail) {
-  exit();   
+if (!STDIN) exit("ERROR");
+
+$mail = "";
+while(!feof(STDIN)) {
+  $mail .= fgets(STDIN);
 }
 
 $params['include_bodies'] = true;
@@ -20,19 +22,15 @@ $structure = $decoder->decode($params);
 
 // elements
 //////////////////////////////////////////////////////////////////////////////
-$from    = $structure -> headers['from'];
-$to      = $structure -> headers['delivered-to'];
-$subject = $structure -> headers['subject'];
-$date    = $structure -> headers['date'];
-$textObj = explode(" ",explode("\n",$structure -> parts[0] -> {'body'})[4]);
-$task    = $textObj[0];
-$taskUrl = rtrim(ltrim($textObj[1],"("),")");
-$dueDate = "";
-
-for($i = array_search("due",$textObj) + 1;$i < count($textObj);$i++){
-  $dueDate .= ($textObj[$i]." ");
-}
-$dueDate = trim($dueDate)."\n";
+$from      = $structure -> headers['from'];
+$to        = $structure -> headers['delivered-to'];
+$subject   = $structure -> headers['subject'];
+$date      = $structure -> headers['date'];
+$textObj   = explode(" is due ",explode("\n",$structure -> parts[0] -> {'body'})[4]);
+$task      = explode(" (",explode(" on ",$textObj[0])[0]);
+$taskTitle = $task[0];
+$taskUrl   = rtrim($task[1],")");
+$dueDate   = $textObj[1]; 
 //////////////////////////////////////////////////////////////////////////////
 
 // read info.taxt
@@ -43,14 +41,6 @@ $channel   = $slackInfo[2];
 $botName   = $slackInfo[3];
 $iconEmoji = $slackInfo[4];
 
-/*
-$text = <<< EOM
-  "task: $task
-  url: $taskUrl
-  due date: $dueDate"
-EOM;
-*/
-
-$text = "task: <$taskUrl|$task> due date: $dueDate";
+$text = ">>> Task: *<$taskUrl|$taskTitle>* Due Date: *$dueDate*";
 $text = trim($text);
-exec("curl -X POST --data-urlencode 'payload={\"channel\": \"$channel\", \"username\": \"$botName\", \"text\": \"$text\", \"icon_emoji\": \"$iconEmoji\"}' https://$domain.slack.com/services/hooks/incoming-webhook?token=$token");
+exec("curl -X POST  --data-urlencode 'payload={\"channel\": \"$channel\", \"username\": \"$botName\", \"text\": \"$text\", \"icon_emoji\": \"$iconEmoji\"}' https://$domain.slack.com/services/hooks/incoming-webhook?token=$token");
