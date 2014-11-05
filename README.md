@@ -12,6 +12,8 @@ You should be able to receive it at least.
 ## Experiment Environment
   - OS centOS: release 6.6 (Final)
 
+`$ git clone git@github.com:Slack-Channels/trello2slack.git`  
+
 ## POSTFIX(v 2.6.6)
 
 ### main.cf 
@@ -27,7 +29,7 @@ path: /etc/aliases
 
 ```
 # "receive user" : "command to operate when if you receive"
-trello: "| /usr/bin/php /tmp/trello2slack/app.php > /dev/null 2>&1"
+trello: "| /usr/bin/php /<path>/trello2slack/app.php > /dev/null 2>&1"
 ```
 
 `$ sudo newaliases`    
