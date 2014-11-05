@@ -54,4 +54,12 @@ slack info
 - 2. token  
 - 3. channel  
 - 4. bot name  
-- 5. emoji(like :moyai: )  
+- 5. emoji(`:moyai:` :moyai:)  
+
+# like this
+![:-(](http://about-hiroppy.com/screenshot/trello2slack/20141105%2015.56.51.png)  
+
+# Licence
+[MIT](http://opensource.org/licenses/MIT)  
+
+
