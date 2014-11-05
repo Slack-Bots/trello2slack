@@ -49,7 +49,9 @@ trello: "| /usr/bin/php /tmp/trello2slack/app.php > /dev/null 2>&1"
 `$ pear install Mail_mimeDecode`    
 
 # info.txt  
-slack info  
+path: trello2slack/  
+write slack info  
+
 - 1. subdomain  
 - 2. token  
 - 3. channel  
